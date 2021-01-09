@@ -152,6 +152,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-kotlin-任务15" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/01/kotlin-%E4%BB%BB%E5%8A%A115/">kotlin 任务15</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/01/kotlin-%E4%BB%BB%E5%8A%A115/" class="archive-article-date">
+  	<time datetime="2020-01-01T07:49:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天是元旦，昨天写了一篇年终总结，有点飘？不可能，当然今天我不会继续写，今天要做的事很简单，把委托的基本叙述结尾，那么剩下的任务是存储委托属性</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shop</span></span>(<span class="keyword">val</span> book:Map&lt;String,Any?&gt;)&#123;</span><br><span class="line">    <span class="keyword">val</span> name:String <span class="keyword">by</span> map</span><br><span class="line">    <span class="keyword">val</span> desc:String <span class="keyword">by</span> map</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dictionary</span></span>(<span class="keyword">val</span> bookType:MutableMap&lt;String,any?&gt;)&#123;</span><br><span class="line">    <span class="keyword">val</span> name:String <span class="keyword">by</span> bookType</span><br><span class="line">    <span class="keyword">val</span> idx:<span class="built_in">Int</span> <span class="keyword">by</span> bookType</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">main</span></span>()&#123;</span><br><span class="line">    <span class="keyword">val</span> shop = Shop(mapOf(</span><br><span class="line">        <span class="string">&quot;name&quot;</span> to <span class="string">&quot;wrage&quot;</span></span><br><span class="line">        <span class="string">&quot;desc&quot;</span> to <span class="string">&quot;a famous book&quot;</span></span><br><span class="line">    ))</span><br><span class="line"></span><br><span class="line">    println(shop.name)</span><br><span class="line">    println(shop.desc)</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> type1 = Dictionary(</span><br><span class="line">        mutableMap(</span><br><span class="line">           <span class="string">&quot;name&quot;</span> to <span class="string">&quot;science&quot;</span></span><br><span class="line">            <span class="string">&quot;idx&quot;</span> to <span class="number">1009</span></span><br><span class="line">        )</span><br><span class="line">   )</span><br><span class="line">   type1.put(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;language&quot;</span>)</span><br><span class="line">   type1.put(<span class="string">&quot;idx&quot;</span>,<span class="number">20001</span>)</span><br><span class="line"></span><br><span class="line">   println(type1.name)</span><br><span class="line">   println(type1.idx)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/01/kotlin-%E4%BB%BB%E5%8A%A115/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2019-年终总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -172,7 +235,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>    2019 恍然间就要远去，这一年是我重新做程序员的第三年，从前我不会去总结一年的过往纪事，也不会对技能的水平进行评估，这是因为我总是匆忙的，玩也忙，工作也忙，会朋友忙，看电影忙，吃饭忙，走路忙，甚至睡觉也得逼着自己入睡，所以，我也无暇静下来，面对过去的一年。但是今天，12月31，我开始意识到回顾是能让自己更积极面对未来的事，因为认识到自己的现状，也就像有了握把（正在看罗胖在说握把):）。
+        <h1 id="2019年回顾"><a href="#2019年回顾" class="headerlink" title="2019年回顾"></a>2019年回顾</h1><pre><code>    2019 恍然间就要远去，这一年是我重新做程序员的第三年，从前我不会去总结一年的过往纪事，也不会对技能的水平进行评估，这是因为我总是匆忙的，玩也忙，工作也忙，会朋友忙，看电影忙，吃饭忙，走路忙，甚至睡觉也得逼着自己入睡，所以，我也无暇静下来，面对过去的一年。但是今天，12月31，我开始意识到回顾是能让自己更积极面对未来的事，因为认识到自己的现状，也就像有了握把（正在看罗胖在说握把):）。
     2019,我从4月1号开始入职，从一开始的改代码，到一个月左右之后开始重构，也初步具有了组件化意识，慢慢的在做迭代过程中，为了应对重复造轮子，也有了控件化的实践，虽然到现在为止，离架构化还有些东西的做，比如对于代理，泛型，工厂等模式的理解还不够深，归根结底，知识不够系统化，所以再接下来的2020，当然我现在先不展望，我会更加深入的去了解平常不常接触的系统层面的知识。
     2019，我从年初对新工作的兴奋，到年底现在的不那么自豪，这个变化是面对自己的变化，在之前，我一直以为我应该是在某个阶段，所以我只能在那个阶段开始起飞，然而就像在看前几天的胖5升空的动画，里面的分离点都是用一个框框，如果等飞到那个点时再起飞，无异于速度从零开始，失去原有的加速度，人生也是一样，如果在某个点应该进步，却选择了停下来铆劲，那么不仅自己也会憋屈，别人也会觉得诧异，因为你本不属于那个层级。
     2019，我想我已经开始养家糊口，为什么这么说，不是已经工作三年了嘛。因为这一年，我开始有了无依靠感，这是一种担当，当然现阶段我可能还没窘迫到要考虑下一顿，但在一年中一直被下一月的账单焦虑着，细算一下今年因为入了NEW币，亏损两万多，这个账单困扰了4个月样子，然后加上之前找工作欠下的1.5w，加起来困扰到了12月才算还清。当然年初也通过外单赚了1.1w,也就是说今年收入17w + 1.1w = 18.1w，结余 18.1w - 2.5w  = 15.6，家庭支出 2.7w，自己房租开支8 * 1.9 = 1.52w，房贷开支 4.5w，算下来，几年自己日常开支居然有6.9w，月均消费逮到了7千多，但，我不知道花到哪里了。
@@ -706,70 +769,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/09/kotlin-%E4%BB%BB%E5%8A%A17/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kotlin-任务6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/07/kotlin-%E4%BB%BB%E5%8A%A16/">kotlin 任务6</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/07/kotlin-%E4%BB%BB%E5%8A%A16/" class="archive-article-date">
-  	<time datetime="2019-12-07T06:28:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="kotlin-任务6"><a href="#kotlin-任务6" class="headerlink" title="kotlin 任务6"></a>kotlin 任务6</h1><hr>
-<p>前面学习了扩展，今天看教程时看到了封闭类（sealed）,此类与when配合时可以省略else，即作为表达式不是语句.</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">Base</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>()&#123;</span><br><span class="line">   <span class="function"><span class="keyword">fun</span> <span class="title">calcu</span><span class="params">(<span class="keyword">val</span> base:<span class="type">Base</span>)</span></span>:<span class="built_in">Int</span> = <span class="keyword">when</span>(base)&#123;</span><br><span class="line">      <span class="keyword">is</span> Sum-&gt; eval(base.e1) + eval(base.e2)</span><br><span class="line">      <span class="keyword">is</span> Const -&gt; base.num</span><br><span class="line">      NotANum -&gt; <span class="built_in">Int</span>.NaN</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/07/kotlin-%E4%BB%BB%E5%8A%A16/">展开全文 >></a>
         </p>
       
 
