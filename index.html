@@ -152,6 +152,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Android-Activity启动模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/05/Android-Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/">Android_Activity启动模式</a>
+    </h1>
+  
+
+        
+        <a href="/2021/06/05/Android-Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2021-06-05T06:33:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安卓-基础"><a href="#安卓-基础" class="headerlink" title="安卓   基础"></a>安卓   基础</h2><p>最近在面试的时候，发现对于Activity启动模式掌握不够，今天基于Android11来一次各个场景梳理：</p>
+<h1 id="第一个场景ActivityA（lauchmode：standard）-ActivityB-lauchmode：singleTask"><a href="#第一个场景ActivityA（lauchmode：standard）-ActivityB-lauchmode：singleTask" class="headerlink" title="第一个场景ActivityA（lauchmode：standard） ActivityB(lauchmode：singleTask)"></a>第一个场景ActivityA（lauchmode：standard） ActivityB(lauchmode：singleTask)</h1><p>测试流程从ActivityA启东到ActivityB，然后再启动ActivityA，再启动ActivityB,生命周期如下<br>onPause(ActivityA) =&gt;  onCreate(ActivityB) =&gt; onResume(ActivityB) =&gt; onStop(ActivityA)<br>=&gt; onPause(ActivityB) =&gt; onCreate(ActivityA) =&gt; onResume(ActivityA) =&gt; onStop(ActivityB)<br>=&gt; onRestart(ActivityB) =&gt;  onNewIntent(ActivityB) =&gt; onResume(ActivityB) =&gt; onStop(ActivityA) =&gt; onDestroy(ActivityA)</p>
+<p>结论：singleTask只要栈内有实例就会复用(并且把上面的其它实例销毁，不会走onPause)</p>
+<h1 id="第二个场景ActivityA（lauchmode：standard）-ActivityB-lauchmode：singleTop"><a href="#第二个场景ActivityA（lauchmode：standard）-ActivityB-lauchmode：singleTop" class="headerlink" title="第二个场景ActivityA（lauchmode：standard） ActivityB(lauchmode：singleTop)"></a>第二个场景ActivityA（lauchmode：standard） ActivityB(lauchmode：singleTop)</h1><p>测试流程从ActivityA启东到ActivityB，然后再启动ActivityA，再启动ActivityB,生命周期如下</p>
+<p>onPause(ActivityA) =&gt;  onCreate(ActivityB) =&gt; onResume(ActivityB) =&gt; onStop(ActivityA)<br>=&gt; onPause(ActivityB) =&gt; onCreate(ActivityA) =&gt; onResume(ActivityA) =&gt; onStop(ActivityB)<br>=&gt; onPause(ActivityA) =&gt; onCreate(ActivityB) =&gt; =&gt; onResume(ActivityB) =&gt; onStop(ActivityA)</p>
+<p>回退一下（1）<br>onPause(ActivityB) =&gt; onRestart(ActivityA) =&gt; onResume(ActivityA) =&gt; onStop(ActivityB) =&gt; onDestroy(ActivityB)</p>
+<p>回退一下（2）<br>onPause(ActivityA) =&gt; onRestart(ActivityB) =&gt; onResume(ActivityB) =&gt; onStop(ActivityA) =&gt; onDestroy(ActivityA)</p>
+<p>回退一下（3）<br>onPause(ActivityB) =&gt; onRestart(ActivityA) =&gt; onResume(ActivityA) =&gt; onStop(ActivityB) =&gt; onDestroy(ActivityB)</p>
+<p>可见SingleTop只有Activity在栈顶时才会复用，否则又新建一个实例。</p>
+<h1 id="第三个场景ActivityA（lauchmode：standard）-ActivityB-lauchmode：singleInstance"><a href="#第三个场景ActivityA（lauchmode：standard）-ActivityB-lauchmode：singleInstance" class="headerlink" title="第三个场景ActivityA（lauchmode：standard） ActivityB(lauchmode：singleInstance)"></a>第三个场景ActivityA（lauchmode：standard） ActivityB(lauchmode：singleInstance)</h1><p>测试流程从ActivityA启东到ActivityB，然后再启动ActivityA，再启动ActivityB,生命周期如下</p>
+<p>onPause(ActivityA) =&gt;  onCreate(ActivityB) =&gt; onResume(ActivityB) =&gt; onStop(ActivityA)<br>=&gt; onPause(ActivityB) =&gt;  onCreate(ActivityA) =&gt; onResume(ActivityA) =&gt; onStop(ActivityB)<br>=&gt; onPause(ActivityA) =&gt; onRestart(ActivityB) =&gt; onNewIntent(ActivityB) =&gt; onResume(ActivityB) =&gt; onStop(ActivityA)</p>
+<p>回退一下（1）<br>onPause(ActivityB) =&gt; onRestart(ActivityA) =&gt; onResume(ActivityA) =&gt; onStop(ActivityB) =&gt; onDestroy(ActivityB)</p>
+<p>回退一下（2）<br>onPause(ActivityA) =&gt; onRestart(ActivityA) =&gt; onResume(ActivityA) =&gt; onStop(ActivityA) =&gt; onDestroy(ActivityA)</p>
+<p>回退一下（3）<br>onPause(ActivityB) =&gt; onRestart(ActivityA) =&gt; onResume(ActivityA) =&gt; onStop(ActivityB) =&gt; onDestroy(ActivityB)</p>
+<p>ActivityB复用了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/06/05/Android-Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2020总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -709,71 +786,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/01/05/kotlin-%E4%BB%BB%E5%8A%A117/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kotlin-任务16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/03/kotlin-%E4%BB%BB%E5%8A%A116/">kotlin 任务16</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/03/kotlin-%E4%BB%BB%E5%8A%A116/" class="archive-article-date">
-  	<time datetime="2020-01-03T14:10:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>循环控制，那么就是foreach while when break return continue之类的，意思与java都差不多，主要学习下库函数</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> array = arrayOf(<span class="string">&quot;usa&quot;</span>,<span class="string">&quot;china&quot;</span>,<span class="string">&quot;indian&quot;</span>,<span class="string">&quot;uk&quot;</span>)</span><br><span class="line"><span class="keyword">for</span>(idx <span class="keyword">in</span> array.indices)&#123;</span><br><span class="line">    println(<span class="string">&quot;index is <span class="variable">$idx</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>((index,value) <span class="keyword">in</span> array.withIndex())&#123;</span><br><span class="line">    println(<span class="string">&quot;element is <span class="variable">$value</span>,idx is <span class="variable">$index</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>还有些kotlin的遍历语法需要注意</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(idx <span class="keyword">in</span> <span class="number">1.</span><span class="number">.10</span>)&#123;</span><br><span class="line">   println(<span class="string">&quot;<span class="variable">$idx</span>&quot;</span>) </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(idx <span class="keyword">in</span> <span class="number">100</span> downTo <span class="number">1</span>)&#123;</span><br><span class="line">    println(<span class="string">&quot;<span class="variable">$idx</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(idx <span class="keyword">in</span> <span class="number">1.</span><span class="number">.10</span> step <span class="number">2</span>)&#123;</span><br><span class="line">    println(<span class="string">&quot;<span class="variable">$idx</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(idx <span class="keyword">in</span> <span class="number">1</span> until <span class="number">10</span>)&#123;<span class="comment">//不包含10</span></span><br><span class="line">   println(<span class="string">&quot;<span class="variable">$idx</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/03/kotlin-%E4%BB%BB%E5%8A%A116/">展开全文 >></a>
         </p>
       
 

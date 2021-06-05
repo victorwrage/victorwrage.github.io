@@ -152,6 +152,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-kotlin-任务16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/03/kotlin-%E4%BB%BB%E5%8A%A116/">kotlin 任务16</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/03/kotlin-%E4%BB%BB%E5%8A%A116/" class="archive-article-date">
+  	<time datetime="2020-01-03T14:10:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>循环控制，那么就是foreach while when break return continue之类的，意思与java都差不多，主要学习下库函数</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> array = arrayOf(<span class="string">&quot;usa&quot;</span>,<span class="string">&quot;china&quot;</span>,<span class="string">&quot;indian&quot;</span>,<span class="string">&quot;uk&quot;</span>)</span><br><span class="line"><span class="keyword">for</span>(idx <span class="keyword">in</span> array.indices)&#123;</span><br><span class="line">    println(<span class="string">&quot;index is <span class="variable">$idx</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>((index,value) <span class="keyword">in</span> array.withIndex())&#123;</span><br><span class="line">    println(<span class="string">&quot;element is <span class="variable">$value</span>,idx is <span class="variable">$index</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还有些kotlin的遍历语法需要注意</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(idx <span class="keyword">in</span> <span class="number">1.</span><span class="number">.10</span>)&#123;</span><br><span class="line">   println(<span class="string">&quot;<span class="variable">$idx</span>&quot;</span>) </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(idx <span class="keyword">in</span> <span class="number">100</span> downTo <span class="number">1</span>)&#123;</span><br><span class="line">    println(<span class="string">&quot;<span class="variable">$idx</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(idx <span class="keyword">in</span> <span class="number">1.</span><span class="number">.10</span> step <span class="number">2</span>)&#123;</span><br><span class="line">    println(<span class="string">&quot;<span class="variable">$idx</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(idx <span class="keyword">in</span> <span class="number">1</span> until <span class="number">10</span>)&#123;<span class="comment">//不包含10</span></span><br><span class="line">   println(<span class="string">&quot;<span class="variable">$idx</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/03/kotlin-%E4%BB%BB%E5%8A%A116/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-kotlin-任务15" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -705,70 +770,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/10/kotlin-%E4%BB%BB%E5%8A%A18/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kotlin-任务7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/09/kotlin-%E4%BB%BB%E5%8A%A17/">kotlin 任务7</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/09/kotlin-%E4%BB%BB%E5%8A%A17/" class="archive-article-date">
-  	<time datetime="2019-12-09T14:16:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="kotlin-任务6-内联类"><a href="#kotlin-任务6-内联类" class="headerlink" title="kotlin 任务6(内联类)"></a>kotlin 任务6(内联类)</h1><hr>
-<p>前面学习了密封类sealed，密封类的继承必须在其相同文件中申明，今天看了下内联类，内联类是一种为节约内存资源而出现的特殊类</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="class"><span class="keyword">class</span> <span class="title">Base</span></span>(<span class="keyword">val</span> s:String)&#123;</span><br><span class="line">   <span class="function"><span class="keyword">fun</span> length:<span class="title">Int</span><span class="params">()</span></span></span><br><span class="line">      <span class="keyword">get</span>() = s.length</span><br><span class="line">      </span><br><span class="line">   <span class="function"><span class="keyword">fun</span> <span class="title">printStr</span><span class="params">()</span></span>&#123;</span><br><span class="line">       println(<span class="string">&quot;base s=<span class="variable">$s</span>&quot;</span>)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">val</span> base = Base(<span class="string">&quot;kotlin&quot;</span>)</span><br><span class="line">base.printStr()</span><br><span class="line">println(<span class="string">&quot;length=&quot;</span>+base.length)</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/09/kotlin-%E4%BB%BB%E5%8A%A17/">展开全文 >></a>
         </p>
       
 
